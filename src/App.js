@@ -31,14 +31,17 @@ const Characters = [
   }
 ];
 
+function renderPenthouse(char) {
+  return <Penthouse name={char.name} img={char.image} />
+}
+
 function App() {
   return (
     <div>
       <h3>펜트하우스 소개</h3>
-      {Characters.map(char => (
-            <Penthouse name={char.name} img={char.image}/>
-          )
-        )}
+      {console.log("React conponent의 내부 확인")}
+      {console.log(Characters.map(renderPenthouse))}
+      {Characters.map(renderPenthouse)}
     </div>
   );
 }
