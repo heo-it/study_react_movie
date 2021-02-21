@@ -14,9 +14,18 @@ class App extends React.Component{
   minus = () => {
     this.setState({ count: this.state.count - 1 });
   };
+  // https://ko.reactjs.org/docs/react-component.html
+  constructor(props) {
+    super(props);
+    console.log("constructor");
+  }
+  componentDidMount(){
+    console.log("component rendered- 컴포넌트가 처음 render 되었을 때 호출");
+  }
   // return이 아닌 render 메소드를 사용해서 html을 리턴함
   // render는 refresh를 지원하지 않음. 따라서 setState를 사용해서 갱신해줘야함
   render(){
+    console.log("render");
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
@@ -24,6 +33,12 @@ class App extends React.Component{
         <button onClick={this.minus}>Minus</button>
       </div>
     );
+  }
+  componentDidUpdate() {
+    console.log("updating");
+  }
+  componentWillUnmount(){
+    console.log("componentWillUnmount");
   }
 }
 
