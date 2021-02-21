@@ -9,12 +9,13 @@ class App extends React.Component{
     count: 0
   };
   add = () => {
-    console.log("add");
+    this.setState(current => ({ count: current.count + 1 }));
   };
   minus = () => {
-    console.log("minus");
+    this.setState({ count: this.state.count - 1 });
   };
   // return이 아닌 render 메소드를 사용해서 html을 리턴함
+  // render는 refresh를 지원하지 않음. 따라서 setState를 사용해서 갱신해줘야함
   render(){
     return (
       <div>
