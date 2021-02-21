@@ -2,63 +2,28 @@ import React from 'react';
 // https://www.npmjs.com/package/prop-types
 import PropTypes from 'prop-types';
 
-// es5 문법 -> es6 문법
-// function Food(props) {
-//   console.log(props.fav);
-function Penthouse({ name, img, rating }) {
-  return (
-    <div>
-      <h2> 이름: {name} </h2>
-      <h4>{ rating }/4.0</h4>
-      <img src={img} alt={name}></img>
-    </div>
-  );
-}
-
-const Characters = [
-  {
-    id: 1,
-    name: "주단태",
-    image: "./img/Dantae_Ju.jpg",
-    // rating: 4
-  },
-  {
-    id: 2,
-    name: "천서진",
-    image: "./img/Chun_Seo_jin.jpg",
-    rating: 3.9
-  },
-  {
-    id: 3,
-    name: "오윤희",
-    image: "./img/Oh_Yoon_Hee.jpg",
-    rating: 3.8
-  },
-  {
-    id: 4,
-    name: "하윤철",
-    image: "./img/Ha_Yoon_chul.jpg",
-    rating: 3.7
+// Java 처럼 react component를 상속받아 사용하는 느낌
+// states를 사용하기 위해 class component를 사용
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  add = () => {
+    console.log("add");
+  };
+  minus = () => {
+    console.log("minus");
+  };
+  // return이 아닌 render 메소드를 사용해서 html을 리턴함
+  render(){
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
   }
-];
-
-Penthouse.propTypes = {
-  name: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  // PropTypes를 사용하면 프로퍼티가 요구하는 타입등을 체크할 수 있음.
-  rating: PropTypes.number
-}
-
-function App() {
-  return (
-    <div>
-      <h3>펜트하우스 소개</h3>
-      {Characters.map(char => (
-            <Penthouse key={char.id} name={char.name} img={char.image} rating={char.rating}/>
-          )
-        )}
-    </div>
-  );
 }
 
 export default App;
